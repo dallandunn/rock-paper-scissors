@@ -4,35 +4,39 @@ function computerPlay () {
 }
 
 function playRound(playerSelection, computerSelection) {
+    const selections = document.querySelector('.selections');
+    selections.textContent = `The computer chooses ${computerSelection}. You choose ${playerSelection}.`;
+    const div = document.querySelector('.result');
+
     if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-        console.log(`It is a Tie! You both chose ${computerSelection}`);
-        return 'no winner'
+        div.textContent = `It is a Tie! You both chose ${computerSelection}`;
+        return 'no winner';
     }
     switch (playerSelection.toLowerCase()) {
         case 'rock':
             if (computerSelection === 'Paper') {
-                console.log('You Lose! Paper beats Rock')
+                div.textContent = 'You Lose! Paper beats Rock';
                 return 'computer';
             } else {
-                console.log('You Win! Rock beats Scissors');
+                div.textContent = 'You Win! Rock beats Scissors';
                 return 'player';
             }
 
         case 'paper':
             if (computerSelection === 'Rock') {
-                console.log('You Win! Paper beats Rock');
+                div.textContent = 'You Win! Paper beats Rock';
                 return 'player';
             } else {
-                console.log('You Lose! Scissors beats Paper');
+                div.textContent = 'You Lose! Scissors beats Paper';
                 return 'computer';
             }
         
         case 'scissors':
             if (computerSelection === 'Paper') {
-                console.log('You Win! Scissors beats Paper');
+                div.textContent = 'You Win! Scissors beats Paper';
                 return 'player';
             } else {
-                console.log('You Lose! Rock beats Scissors');
+                div.textContent = 'You Lose! Rock beats Scissors';
                 return 'computer';
             }
     }
