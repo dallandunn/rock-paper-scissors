@@ -6,6 +6,10 @@ function computerPlay () {
 function playRound(playerSelection, computerSelection) {
     const selections = document.querySelector('.selections');
     selections.textContent = `The computer chooses ${computerSelection}. You choose ${playerSelection}.`;
+    setTimeout(function(){
+        selections.textContent = "";
+    }, 10000);
+
     const div = document.querySelector('.result');
 
     if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
@@ -43,39 +47,42 @@ function playRound(playerSelection, computerSelection) {
 }
 
  function getSelection(e) {
+    const playerCounter = document.querySelector('#player');
+    const computerCounter = document.querySelector('#computer');
+    const result = document.querySelector('.result');
+
     let playerSelection = e.srcElement.textContent;
-    playRound(playerSelection, computerPlay());
+    if (playerWins < 5 && computerWins < 5) {
+        winner = playRound(playerSelection, computerPlay());
+        if (winner === 'player') {
+            playerWins++;
+        }
+
+        if (winner === 'computer') {
+            computerWins++;
+        }
+
+        playerCounter.textContent = playerWins;
+        computerCounter.textContent = computerWins;
+    }
+
+    if (playerWins === 5) {
+        result.textContent = "You Win!";
+        setTimeout(function() {
+            alert('You Win');
+        }, 1000);
+    }
+
+    if (computerWins === 5) {
+        result.textContent = "The computer wins!";
+        setTimeout(function() {
+            alert('You Lose');
+        }, 1000);
+    }
 }
+
+let playerWins = 0;
+let computerWins = 0;
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach(btn => btn.addEventListener('click', getSelection));
-
-// function game() {
-//     let playerWins = 0;
-//     let computerWins =0;
-
-  
-//     console.log(`Round ${i}:`);
-//     let playerSelection = prompt('Rock, Paper or Scissors?');
-//     let computerSelection = computerPlay();
-//     let winner = playRound(playerSelection, computerSelection);
-
-//     if (winner === 'player') {
-//         playerWins++;
-//     }
-
-//     if (winner === 'computer') {
-//         computerWins++;
-//     }
-    
-
-//     if (computerWins > playerWins) {
-//         console.log(`You Lose! The computer won ${computerWins} Rounds. You won ${playerWins} rounds.`);
-//     } else if (playerWins > computerWins) {
-//         console.log(`You win! The computer won ${computerWins} Rounds. You won ${playerWins} rounds.`);
-//     } else {
-//         console.log(`It is a tie! The computer won ${computerWins} Rounds. You won ${playerWins} rounds.`)
-//     }
-// }
-
-// game()
