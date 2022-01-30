@@ -1,0 +1,52 @@
+body {
+    background-color: #2A324B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #C7CCDB;
+}
+
+button {
+    color: #2A324B;
+    outline: 0;
+}
+
+button:hover {
+    background-color: #F7C59F;
+    font-weight: bold;
+}
+
+.rock {
+    background-color: #767B91;
+    border-color: #767B91;
+}
+
+.Paper {
+    background-color: #C7CCDB;
+    border-color: #C7CCDB;
+}
+
+.Scissors {
+    background-color: #E1E5EE;
+    border-color: #E1E5EE;
+}
+
+.result, .selections {
+    color: #C7CCDB;
+    font-size: 24px;
+}
+
+.wins {
+    color: white;
+    text-align: left;
+    font-size: 20px;
+}
+
+#player, #computer {
+    text-align: center;
+    color: #F7C59F;
+    font-weight: bold;
+}
